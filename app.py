@@ -1,8 +1,19 @@
 import streamlit as st
 
-# 1. Page Config
+# 1. Page Config (Hamesha sabse upar hona chahiye)
 st.set_page_config(layout="wide", page_title="Gapix AI Platform", page_icon="🚀")
 
+# 2. API Key (Sirf Secrets se uthao, direct key mat likho)
+try:
+    OPENROUTER_API_KEY = st.secrets["OPENROUTER_API_KEY"]
+except KeyError:
+    st.error("API Key not found in Streamlit Secrets!")
+    st.stop()
+
+# 3. Model Configuration
+SELECTED_MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
+
+# 4. Baaki saare Imports
 import sqlite3
 import hashlib
 from PyPDF2 import PdfReader
@@ -10,14 +21,8 @@ import plotly.graph_objects as go
 import time
 import pandas as pd
 import re
-
-# API Configuration
 import requests
 import json
-
-# Sahi tarika Secrets se read karne ka
-api_key = st.secrets["OPENROUTER_API_KEY"]
-SELECTED_MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
 
 # ==========================================
 # 🔐 ADVANCED DATABASE MODULE
