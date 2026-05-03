@@ -1,0 +1,6 @@
+streamlit
+sqlite3
+PyPDF2
+plotly
+pandas
+requests
