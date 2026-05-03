@@ -15,7 +15,7 @@ import re
 import requests
 import json
 
-# API Key ko code se hata kar secrets se read karo
+# Sahi tarika Secrets se read karne ka
 api_key = st.secrets["OPENROUTER_API_KEY"]
 SELECTED_MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
 
